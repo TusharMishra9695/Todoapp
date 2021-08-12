@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 function App() {
   return (
     <div className="App">
-      <h1 className>
+      <h1 >
         Todo App
       </h1>
    
@@ -15,5 +15,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

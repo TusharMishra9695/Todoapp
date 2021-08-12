@@ -9,22 +9,22 @@ import {
 import TodoItem from "./TodoItem";
 import { AnimatePresence, motion } from "framer-motion";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:Function) => {
   return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-    removeTodo: (id) => dispatch(removeTodos(id)),
-    updateTodo: (obj) => dispatch(updateTodos(obj)),
-    completeTodo: (id) => dispatch(completeTodos(id)),
+    addTodo: (obj:object) => dispatch(addTodos(obj)),
+    removeTodo: (id:object) => dispatch(removeTodos(id)),
+    updateTodo: (obj:object) => dispatch(updateTodos(obj)),
+    completeTodo: (id:object) => dispatch(completeTodos(id)),
   };
 };
 
-const DisplayTodos = (props) => {
+const DisplayTodos = (props:any) => {
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -54,7 +54,7 @@ const DisplayTodos = (props) => {
       <ul>
         <AnimatePresence>
           {props.todos.length > 0 && sort === "active"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item:any) => {
                 return (
                   item.completed === false && (
                     <TodoItem
@@ -70,7 +70,7 @@ const DisplayTodos = (props) => {
             : null}
           {/* for completed items */}
           {props.todos.length > 0 && sort === "completed"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item:any) => {
                 return (
                   item.completed === true && (
                     <TodoItem
@@ -86,7 +86,7 @@ const DisplayTodos = (props) => {
             : null}
           {/* for all items */}
           {props.todos.length > 0 && sort === "all"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item:any) => {
                 return (
                   <TodoItem
                     key={item.id}

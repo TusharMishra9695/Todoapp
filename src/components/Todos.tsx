@@ -3,22 +3,21 @@ import { connect } from "react-redux";
 import { addTodos } from "../redux/reducer";
 import { GoPlus } from "react-icons/go";
 import { Button } from "@material-ui/core";
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:Function) => {
   return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
+    addTodo: (obj:any) => dispatch(addTodos(obj)),
   };
 };
 
-const Todos = (props) => {
+const Todos = (props:any) => {
   const [todo, setTodo] = useState("");
-
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     setTodo(e.target.value);
   };
 
