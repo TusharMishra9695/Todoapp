@@ -1,8 +1,8 @@
-export   interface Idex {
+export interface Idex {
   item: {
-    id: number,
-    completed: boolean,
-    item: string | number,
+    id: number;
+    completed: boolean;
+    item: string | number;
   };
   updateTodo: Function;
   removeTodo: Function;

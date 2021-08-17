@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addTodos } from "../redux/reducer";
+import { addTodos } from "../../redux/reducer";
 import { GoPlus } from "react-icons/go";
 import { Button } from "@material-ui/core";
-const mapStateToProps = (state:any) => {
+import store from "../../redux/store";
+const mapStateToProps = (state: any) => {
   return {
     todos: state,
   };
 };
-
-const mapDispatchToProps = (dispatch:Function) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    addTodo: (obj:any) => dispatch(addTodos(obj)),
+    addTodo: (obj: any) => dispatch(addTodos(obj)),
   };
 };
 
-const Todos = (props:any) => {
+const Todos = (props: any) => {
   const [todo, setTodo] = useState("");
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     setTodo(e.target.value);
   };
 
@@ -40,12 +40,13 @@ const Todos = (props:any) => {
         onChange={(e) => handleChange(e)}
         className="todo-input"
         value={todo}
+        placeholder="Enter text "
       />
 
       <Button
-     variant="contained"
-     color="primary"
-     style={{marginLeft:"15px"}}
+        variant="contained"
+        color="primary"
+        style={{ marginLeft: "15px" }}
         onClick={() => add()}
       >
         <GoPlus />

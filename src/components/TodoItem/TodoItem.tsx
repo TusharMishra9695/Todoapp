@@ -1,32 +1,27 @@
 import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React, { CElement, HTMLAttributes, MutableRefObject, useRef } from "react";
 import { AiFillEdit } from "react-icons/ai";
-import { Idex } from "../interface/interfac";
+import { Idex } from "../../interface/interfac";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
-
-
-const TodoItem = (props:Idex) => {
+// let input:true;
+const TodoItem = (props: Idex) => {
   const { item, updateTodo, removeTodo, completeTodo } = props;
-
-  const inputRef = useRef(true);
-
+  const inputRef = useRef<HTMLInputElement>(null);
   const changeFocus = () => {
-    // inputRef.current.disabled = false;
-    // inputRef.current.focus();
+    // inputRef.current?.disabled = false;
+    inputRef.current?.focus();
   };
-  
-
-  const update = (id:number, value:any, e:any) => {
+  const update = (id: number, value: any, e: any) => {
     if (e.which === 13) {
       //here 13 is key code for enter key
       updateTodo({ id, item: value });
-      // inputRef.current.disabled = true;
+      // inputRef.current?.disabled = false;
     }
   };
-  // transition: { type: "spring", duration: 2 } 
+  // transition: { type: "spring", duration: 2 }                                     
   return (
     <motion.li
-      initial={{ x: "150vw"  }}
+      initial={{ x: "150vw" }}
       animate={{ x: 0, transition: { type: "spring", duration: 2 } }}
       whileHover={{
         scale: 0.9,
@@ -42,10 +37,12 @@ const TodoItem = (props:Idex) => {
       className="card"
     >
       <textarea
-        //  ref={inputRef}
+        // ref={inputRef}
+        // disabled={inputRef}
+        placeholder="Add text to show"
         // disabled={inputRef} //inputRef.current.value
         defaultValue={item.item}
-        onKeyPress={(e) => update(item.id, inputRef.current.valueOf, e)}
+        onKeyPress={(e) => update(item.id, inputRef.current?.value, e)}
       />
       <div className="btns">
         <motion.button
@@ -79,6 +76,5 @@ const TodoItem = (props:Idex) => {
       {item.completed && <span className="completed">done</span>}
     </motion.li>
   );
-};
-
-export default TodoItem;
+}; 
+export default TodoItem; 

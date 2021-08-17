@@ -5,26 +5,24 @@ import {
   completeTodos,
   removeTodos,
   updateTodos,
-} from "../redux/reducer";
-import TodoItem from "./TodoItem";
+} from "../../redux/reducer";
+import TodoItem from "../TodoItem/TodoItem";
 import { AnimatePresence, motion } from "framer-motion";
-
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state: any) => {
   return {
     todos: state,
   };
 };
-
-const mapDispatchToProps = (dispatch:Function) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
-    addTodo: (obj:object) => dispatch(addTodos(obj)),
-    removeTodo: (id:object) => dispatch(removeTodos(id)),
-    updateTodo: (obj:object) => dispatch(updateTodos(obj)),
-    completeTodo: (id:object) => dispatch(completeTodos(id)),
+    addTodo: (obj: object) => dispatch(addTodos(obj)),
+    removeTodo: (id: object) => dispatch(removeTodos(id)),
+    updateTodo: (obj: object) => dispatch(updateTodos(obj)),
+    completeTodo: (id: object) => dispatch(completeTodos(id)),
   };
 };
 
-const DisplayTodos = (props:any) => {
+const DisplayTodos = (props: any) => {
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -54,7 +52,7 @@ const DisplayTodos = (props:any) => {
       <ul>
         <AnimatePresence>
           {props.todos.length > 0 && sort === "active"
-            ? props.todos.map((item:any) => {
+            ? props.todos.map((item: any) => {
                 return (
                   item.completed === false && (
                     <TodoItem
@@ -70,7 +68,7 @@ const DisplayTodos = (props:any) => {
             : null}
           {/* for completed items */}
           {props.todos.length > 0 && sort === "completed"
-            ? props.todos.map((item:any) => {
+            ? props.todos.map((item: any) => {
                 return (
                   item.completed === true && (
                     <TodoItem
@@ -86,7 +84,7 @@ const DisplayTodos = (props:any) => {
             : null}
           {/* for all items */}
           {props.todos.length > 0 && sort === "all"
-            ? props.todos.map((item:any) => {
+            ? props.todos.map((item: any) => {
                 return (
                   <TodoItem
                     key={item.id}
